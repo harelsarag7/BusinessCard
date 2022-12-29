@@ -1,0 +1,11 @@
+.NavBar {
+	text-align: right;
+    padding: 14px;
+    margin: auto;
+    /* background-color: var(--color-light-text); */
+}
+.NavBar a {
+    padding: 0 40px;
+    font-weight: 600;
+    color: var(--color-four);
+}
