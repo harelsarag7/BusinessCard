@@ -1,0 +1,12 @@
+/* .UserDashboard {
+	
+} */
+.welcome-dashboard {
+    text-align: center;
+}
+
+.dashboard-all-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}

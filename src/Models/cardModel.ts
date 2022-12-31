@@ -1,5 +1,6 @@
 export interface cardModel {
     id?: number;
+    userid?: string;
     businessName?: string;
     businessDescription?: string;
     image?: File;
@@ -7,7 +8,9 @@ export interface cardModel {
     email?: string;
     instagram?: string;
     facebook?: string;
+    twitter?: string;
+    github?: string;
     location?: string;
     website?: string;
-    template?: number;
+    templateNum?: number;
 }

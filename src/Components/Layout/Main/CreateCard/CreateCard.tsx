@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { cardModel } from "../../../../Models/cardModel";
 import { cardFunctions } from "../../../../Services/cards";
+import { userFunctions } from "../../../../Services/user";
 import "./CreateCard.css";
 
 
@@ -10,14 +11,21 @@ function CreateCard(): JSX.Element {
     const navigate = useNavigate();
     const { register, handleSubmit } = useForm<cardModel | any>();
 
-    async function createCardFunction( { businessName, businessDescription, image, phone, email, template }: cardModel){
+    async function createCardFunction( { businessName, businessDescription, image, phone, email, templateNum }: cardModel){
     // async function createCardFunction( { card }: { card : cardModel} ){
-        // console.log(businessName);
-         template = Number(template)
-       await cardFunctions.createCard({businessName, businessDescription, image, phone, email, template}).then((res) => {
+        console.log("template: " + templateNum);
+         templateNum = Number(templateNum)
+
+      const userid = await userFunctions.getUserId();
+      console.log(userid);
+      
+         if(!userid){
+            console.log("must be logged, please sign up");
+            return
+         }
+       await cardFunctions.createCard({userid, businessName, businessDescription, image, phone, email, templateNum}).then((res) => {
         navigate("/card/"+ res.id);
        })
-       
     }
 
     return (
@@ -35,18 +43,25 @@ function CreateCard(): JSX.Element {
                         <label htmlFor="">Email:</label>
                         <input type="email" placeholder="Email:" {...register("email")} />
                     </div>
-                    <div className="input-container">
+                    {/* <div className="input-container">
                         <label htmlFor="">Image:</label>
                         <input type="file" placeholder="Image:" {...register("image")} />
-                    </div>
+                    </div> */}
 
                 {/* Choose Template (Component)*/}
                 <div>
-                    <input {...register("template")} type="radio" checked value={"1"} name="" id="template1" />
+                    {/* <input {...register("templateNum")} type="radio" checked value={"1"} name="template" id="template1" />
                     <label htmlFor="template1">Template 1</label>
                     <br/>
-                    <input {...register("template")} type="radio" value={"2"} name="" id="template2" />
-                    <label htmlFor="template2">Template 2</label>
+                    <input {...register("templateNum")} type="radio" value={"2"} name="template" id="template2" />
+                    <label htmlFor="template2">Template 2</label> */}
+                
+                
+                <select  id="select" required {...register("templateNum")}>
+                    <option value="1" >template 1</option>
+                    <option value="2">template 2</option>
+                </select>
+                
                 </div>
 
 

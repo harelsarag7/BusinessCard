@@ -5,7 +5,8 @@
     /* background-color: var(--color-light-text); */
 }
 .NavBar a {
-    padding: 0 40px;
+    padding: 0 32px;
     font-weight: 600;
     color: var(--color-four);
+    text-decoration: none;
 }

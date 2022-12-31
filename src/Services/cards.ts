@@ -1,12 +1,17 @@
+import jwtDecode from "jwt-decode";
 import { cardModel } from "../Models/cardModel";
+import { userModel } from "../Models/userModel";
+import { userFunctions } from "./user";
 
 class CardFunctions {
 
    async getAllCards(): Promise<cardModel[] | undefined> {
        try {
-         const response =  await fetch(`http://localhost:3030/api/cards`, {
+         const response =  await fetch(`http://localhost:3040/api/cards`, {
             mode: "cors",
          }).then(res => res.json());
+         console.log(response);
+         
           return response;
           
        } catch (e){
@@ -14,18 +19,36 @@ class CardFunctions {
        }
    }
 
+   async getCardByUserid(): Promise<cardModel[] | undefined> {
+      let userid = await userFunctions.getUserId();
+      
+      try {
+         const response =  await fetch(`http://localhost:3040/api/cards/${userid}`, {
+            mode: "cors",
+         }).then(res => res.json());
+         console.log(response);
+         
+          return response;
+          
+       } catch (e){
+           return undefined
+       }
+   }
 
-   async createCard( { businessName, businessDescription, image, phone, email, template} : cardModel ): Promise<cardModel> {
+   async createCard( {userid, businessName, businessDescription, image, phone, email, templateNum} : cardModel ): Promise<cardModel> {
+         // let id = 4;
       let card: cardModel = {
+         // id,
+         userid,
          businessName,
          businessDescription,
          image,
          phone,
          email,
-         template
+         templateNum
       }
       try {
-         const details: cardModel = await fetch(`http://localhost:3030/api/cards`, {
+         const details: cardModel = await fetch(`http://localhost:3040/api/cards`, {
             mode: "cors",
             method: "POST",
             headers : {
@@ -35,8 +58,6 @@ class CardFunctions {
             body:  JSON.stringify(card)
          }).then(res => res.json());
 
-            console.log("Success server");
-            console.log(details);
             
          return details;
       } catch (e) {
@@ -48,13 +69,12 @@ class CardFunctions {
    }
 
 
-   async getCard(id: number | undefined) {
+   async getCard(userid: number | undefined) {
       try {
-         const response =  await fetch(`http://localhost:3030/api/cards/${id}`, {
+         const response =  await fetch(`http://localhost:3040/api/card/${userid}`, {
             mode: "cors",
          }).then(res => res.json());
-         console.log(response);
-         
+         // console.log("harel:  " + response);
           return response;
           
        } catch (e){

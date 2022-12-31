@@ -1,22 +1,13 @@
-.Header {
-	height: 17%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    /* color: var(--color-one); */
-    /* border-bottom: 1px solid black; */
+/* .Login {
+	
+} */
+#login-modal {
+    border: 1px solid lightgrey;
 }
 
-.active {
-    font-weight:  bold;
+#wrong-password-username {
+    color: red;
 }
-
-#logout-header {
-    color: white;
-    background-color: rgb(185, 11, 11);
-    cursor: pointer;
-}
-
 .login-btn-header {
     width: 130px;
     font-size: 16px;
@@ -54,26 +45,4 @@
         #3f86ed
       );
       box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
-}
-
-.logo img{
-    position: relative;
-    top: 2px;
-    width: 180px;
-    height: 140px;
-}
-
-
-.container {
-    width: 60%;
-    display: flex;
-    justify-content: space-around;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-}
-
-.categories-container{
-    width: 100%;
-    /* background-color: var(--color-two); */
 }
