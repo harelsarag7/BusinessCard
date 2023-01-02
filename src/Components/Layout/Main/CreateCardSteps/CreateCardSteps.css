@@ -1,0 +1,9 @@
+ .stepNum-button {
+	padding: 15px;
+}
+
+.form-step-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}

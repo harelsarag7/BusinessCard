@@ -29,7 +29,19 @@ ul > li { line-height: 1.5em; }
     width: 90%;
     margin: auto;
     padding: 80px 100px;
-    background: #705df2;
+    /* background: #705df2; */
+    /* background: rgb(131,58,180); */
+    background: linear-gradient(to right top, #705df2, #c0a8f9);
+/* background: linear-gradient(
+    50deg,
+    hsl(0deg 0% 100%) 0%,
+    hsl(255deg 74% 83%) 21%,
+    hsl(323deg 29% 77%) 44%,
+    hsl(96deg 24% 75%) 67%,
+    hsl(161deg 67% 72%) 86%,
+    hsl(0deg 0% 100%) 100%
+  ); */
+
     border-radius: 15px;
 }
 .start-learning {

@@ -8,7 +8,7 @@ function Layout(): JSX.Element {
         <div className="Layout">
 			<Header/>
             <Main/>
-			{/* <Footer/> */}
+			<Footer/>
         </div>
     );
 }

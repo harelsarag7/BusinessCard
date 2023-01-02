@@ -1,12 +1,25 @@
 .Home {
-    margin-top: 100px;
+    margin: 100px auto;
 	text-align: left;
     display: flex;
     justify-content: center;
     width: 80%;
     font-size: 25px;
+    
 }
-
+.home-container {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    /* align-items: center; */
+    position: relative;
+    left: 70px;
+}
+.home-title-sign {
+    
+    position: relative;
+    top: 40px;
+}
 .Home h1 strong {
     color: #705df2;
 }
@@ -23,7 +36,23 @@
     margin-left:40px ;
 
 }
+.img-home img {
+    width: 500px;
+    position: relative;
+    /* left: 20px; */
+    animation: MoveUpDown 4s linear infinite;
+    bottom: 40px;
+}
 
+
+  @keyframes MoveUpDown {
+    0%, 100% {
+      bottom: 40px;
+    }
+    50% {
+      bottom: 70px;
+    }
+  }
 .emoji {
     width: 70px;
     height: 58px;

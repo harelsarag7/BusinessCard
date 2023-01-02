@@ -22,7 +22,7 @@ function Footer(): JSX.Element {
                 <a href="#" className="button">
                     <span className="label">Join the club</span>
                 </a>
-                <img className="illustration" src="https://static.vecteezy.com/system/resources/previews/011/996/200/original/ecommerce-icon-empty-shopping-cart-3d-illustration-free-png.png" alt="illustration" width="120" height="94"/>
+                {/* <img className="illustration" src="https://static.vecteezy.com/system/resources/previews/011/996/200/original/ecommerce-icon-empty-shopping-cart-3d-illustration-free-png.png" alt="illustration" width="120" height="94"/> */}
             </div>
         </div>
         <div className="inner">

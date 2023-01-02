@@ -9,6 +9,7 @@ function NavBar(): JSX.Element {
 
     
     const [user1, setUser] = useState<userModel | undefined>(undefined)
+
     
     useEffect(() => {
         
@@ -29,6 +30,7 @@ function NavBar(): JSX.Element {
         <div className="NavBar">
                 <NavLink to={"/"}>Home</NavLink>
                 <NavLink to={"/createcard"}>Create Card</NavLink>
+                <NavLink to={"/createcardsteps"}>Create Card Step</NavLink>
                 <NavLink to={`/user/${user1?.username}`}>My Cards</NavLink>
                 {/* <NavLink to={"/blog"}>Blog</NavLink> */}
         </div>
