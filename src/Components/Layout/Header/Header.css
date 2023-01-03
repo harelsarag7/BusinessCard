@@ -72,8 +72,20 @@
     align-items: center;
     margin: 0 auto;
 }
+@media only screen and (max-width: 1400px) {
+    .container {
+        width: 80%;
+    }
+  }
 
 .categories-container{
     width: 100%;
     /* background-color: var(--color-two); */
+}
+
+.Header .avatar-header {
+    
+width: 180px;
+display: flex;
+justify-content: center;
 }

@@ -11,24 +11,35 @@ import UserCard from "./UserCard/UserCard";
 import "./UserDashboard.css";
 
 function UserDashboard(  ): JSX.Element {
-    const [token, setToken] = useState<string | undefined>()
-    const [user1, setUser] = useState<any>()
+    // const [token, setToken] = useState<string | undefined>()
+    const [fullUser, setUser] = useState<userModel>()
     const [cards, setCards] = useState<cardModel[] | undefined>(undefined)
-    // const user = useSelector((state: any) => state.auth)
+    const userRedux = useSelector((state: any) => state.auth)
 
     
     useEffect(() => {
-        let token1: any = window.localStorage.getItem(`userToken`);
-        if(!token1){
-            setUser(undefined)
-        }else {
+        // let token1: any = window.localStorage.getItem(`userToken`);
+        // if(!token1){
+        //     setUser(undefined)
+        // }else {
 
-            setToken(token1?.toString())
-            const user = jwtDecode<{ user: userModel}>(token1);
-            if(user){
-                setUser(user)
-            }
+        //     setToken(token1?.toString())
+        //     const user = jwtDecode<{ user: userModel}>(token1);
+        //     // let id = user.id;
+        //     if(user){
+        //         // userFunctions.getUserById(Number(id))
+        //         console.log(user);
+                
+        //         setUser(user)
+        //     }
+        // }
+        if(userRedux){
+
+            userFunctions.getUserById(userRedux.sub).then((res) => {
+                setUser(res)
+            });
         }
+
 
         cardFunctions.getCardByUserid().then(cards => {
             if(cards?.length === 0){
@@ -48,7 +59,7 @@ function UserDashboard(  ): JSX.Element {
         <div className="UserDashboard">
             {/* {token?  <h1> Hello </h1> :  "Please Sign" } */}
 
-                <div className="welcome-dashboard">{user1? <h1> Welcome {user1.username}</h1> : `Please Login`}</div>
+                <div className="welcome-dashboard">{fullUser? <h1> Welcome {fullUser.firstName}</h1> : `Please Login`}</div>
             <div className="dashboard-all-cards">
                 {cards? cards.map(card => ( <UserCard key={card.id} cardId={card.id}/>))
                  : 

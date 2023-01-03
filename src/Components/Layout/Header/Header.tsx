@@ -4,36 +4,40 @@ import deepOrange from "@mui/material/colors/deepOrange";
 import jwtDecode from "jwt-decode";
 import React from "react";
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userModel } from "../../../Models/userModel";
 import { userFunctions } from "../../../Services/user";
 import Login from "../Main/Auth/Login/Login";
 import NavBar from "./CategoriesNavBar/NavBar";
 import "./Header.css";
+import { logout } from "../../../App/authSlice";
 
 function Header(): JSX.Element {
 
-    const [user1, setUser] = useState<userModel | undefined>(undefined)
-    
+    // const [user1, setUser] = useState<userModel | undefined>(undefined)
+    const dispatch = useDispatch();
 
-    // const user = useSelector((state: any) => state.auth)
+    const userRedux = useSelector((state: any) => state.auth)
 
     useEffect(() => {
+
+        console.log(userRedux);
         
-        let token1: any = window.localStorage.getItem(`userToken`);
         
-        if(!token1){
-            setUser(undefined)
-        } else {
-                const user: any = jwtDecode<{ user: userModel}>(token1);
+        // let token1: any = window.localStorage.getItem(`userToken`);
+        
+        // if(!token1){
+        //     setUser(undefined)
+        // } else {
+        //         const user: any = jwtDecode<{ user: userModel}>(token1);
                 
-                   const userDetails = userFunctions.getUserById(user.sub).then(res => {
+        //            const userDetails = userFunctions.getUserById(user.sub).then(res => {
                     
-                    setUser(res)
-                   });
-                }
+        //             setUser(res)
+        //            });
+        //         }
                 
-    }, [])
+    }, [userRedux])
 
 
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -48,9 +52,8 @@ function Header(): JSX.Element {
       setAnchorEl(null);
     }
   
-    function logout(){ 
-        localStorage.clear();
-        window.location.reload();
+    function logoutButton(){ 
+        dispatch(logout());
     }    
 
     return (
@@ -66,15 +69,15 @@ function Header(): JSX.Element {
                  </div>
 
                  <div>
-                 <div>{user1? 
-                 <div>
+                 <div>{userRedux? 
+                 <div className="avatar-header">
                  {/* <p>Welcome {user1.firstName}</p> */}
                 {/* <Tooltip  onClick={logout} title="Logout" color="danger" size="lg" variant="outlined" id="logout-header"> */}
                          <Avatar 
                          aria-owns={anchorEl ? "simple-menu" : undefined}
                         aria-haspopup="true"
                         onClick={handleClick}
-                        onMouseOver={handleClick} sx={{ bgcolor: deepOrange[500] }}>{user1.firstName?.charAt(0).toLocaleUpperCase()}</Avatar>
+                        onMouseOver={handleClick} sx={{ bgcolor: deepOrange[500] }}>{userRedux.username?.charAt(0).toLocaleUpperCase()}
 
                          <Menu
                             id="simple-menu"
@@ -85,8 +88,9 @@ function Header(): JSX.Element {
                         >
                             <MenuItem onClick={handleClose}>Profile</MenuItem>
                             <MenuItem onClick={handleClose}>My account</MenuItem>
-                            <MenuItem onClick={logout}>Logout</MenuItem>
+                            <MenuItem onClick={logoutButton}>Logout</MenuItem>
                         </Menu>
+                            </Avatar>
                 {/* </Tooltip> */}
                  {/* <button onClick={logout}>Logout</button> */}
                  </div>

@@ -9,10 +9,10 @@ function CardTemplate1( { businessName } : cardModel ): JSX.Element {
     let id = useParams();
     const [card, setCard] = useState<cardModel | undefined>(undefined)
 
-    const CardClass = "CardTemplate" + card?.template;
+    // const CardClass = "CardTemplate" + card?.template;
     const mailTo = "mailto:" + card?.email;
     const phoneTo = "tel:" + card?.phone;
-    console.log(CardClass);
+    // console.log(CardClass);
     
     useEffect(() => {
        const idNum: any= id.id
@@ -22,8 +22,8 @@ function CardTemplate1( { businessName } : cardModel ): JSX.Element {
     }, [])
 
     return (
-        <div className={CardClass}>
-            {card?.template == 1? "Card is 1" : card?.template === 2? " WRONG Card template is 2" : "No template"}
+        <div className={"d"}>
+            {/* {card?.template == 1? "Card is 1" : card?.template === 2? " WRONG Card template is 2" : "No template"} */}
             {card? 
             // <div className="card-template-container ">
 

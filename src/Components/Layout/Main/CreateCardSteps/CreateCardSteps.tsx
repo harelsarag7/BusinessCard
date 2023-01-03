@@ -86,6 +86,8 @@ import PublishIcon from '@mui/icons-material/Publish';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import FormStepOne from "./FormStepOne/FormStepOne";
 import { cardModel } from "../../../../Models/cardModel";
+import { useSelector } from "react-redux";
+import FormStepTemplate from "./FormStepTemplate/FormStepTemplate";
 
 const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
@@ -155,12 +157,15 @@ function ColorlibStepIcon(props: StepIconProps) {
   );
 }
 
-const steps = ['Select campaign settings', 'Create an ad group', 'Create an ad'];
+const steps = ['Fill Information', 'Select a Template', 'Publish'];
 
-export default function CustomizedSteppers() {
+export default function CustomizedSteppers( ) {
   let [stepNum, setStepNum] = useState<number>(0)
+  const cardRedux: cardModel = useSelector((state: any) => state.card);
 
   function stepNext(){
+      
+      // console.log(cardRedux);
     if(stepNum >= steps.length - 1) {
         return;
     } 
@@ -174,16 +179,10 @@ function stepBack(){
     setStepNum(stepNum  = stepNum - 1)
 }
 
-function checking(ob: any){
-  console.log(ob);
-  
-}
-    let cardObj = {}
 
     
     useEffect(() => {
-      window.localStorage.removeItem("cardSteps");
-      console.log(cardObj);
+      console.log(cardRedux);
       
     }, [])
 
@@ -204,11 +203,11 @@ function checking(ob: any){
         ))}
       </Stepper>
             <div className="form-step-container">
-                {stepNum == 0 ? <div> <FormStepOne card={cardObj}  saveInfo={(cardInfo) => saveInfoCard(cardInfo)}  /> </div> : <></>}
-                {stepNum == 1 ? <div> 2 </div>  : <></>}
+                {stepNum == 0 ? <div> <FormStepOne onclick={() => stepNext()} /> </div> : <></>}
+                {stepNum == 1 ? <div> <FormStepTemplate onclick={() => stepNext()} stepBackButton={() => stepBack()}  /> </div>  : <></>}
                 {stepNum == 2 ? <div> 3 </div>  : <></>}
       </div>
-        <button className="stepNum-button" onClick={stepNext}>Next</button>
+        {/* <button className="stepNum-button" onClick={stepNext}>Next</button> */}
         <button className="stepNum-button" onClick={stepBack}>Back</button>
     </Stack>
   );

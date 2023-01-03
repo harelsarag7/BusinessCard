@@ -7,6 +7,7 @@ import CreateCardSteps from "./CreateCardSteps/CreateCardSteps";
 import Home from "./Home/Home";
 // import AllProducts from "./AllProducts/AllProducts";
 import "./Main.css";
+import PageNotFound from "./PageNotFound/PageNotFound";
 import UserDashboard from "./UserDashboard/UserDashboard";
 
 function Main(): JSX.Element {
@@ -22,7 +23,7 @@ function Main(): JSX.Element {
                 <Route path="/createcardsteps" element={<CreateCardSteps/>}></Route>
                 <Route path="/card/:id" element={<CardTemplate/>}></Route>
                 <Route path="/user/:username" element={<UserDashboard/>}></Route>
-                <Route path="/*" element="404"></Route>
+                <Route path="/*" element={<PageNotFound/>}></Route>
 
                 {/* <Route path="/allproducts" element={<AllProducts/>}></Route> */}
                 {/* <Route path="/shoes" element="shoes"></Route> */}

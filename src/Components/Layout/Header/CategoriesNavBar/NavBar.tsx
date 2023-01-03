@@ -29,7 +29,7 @@ function NavBar(): JSX.Element {
     return (
         <div className="NavBar">
                 <NavLink to={"/"}>Home</NavLink>
-                <NavLink to={"/createcard"}>Create Card</NavLink>
+                {/* <NavLink to={"/createcard"}>Create Card</NavLink> */}
                 <NavLink to={"/createcardsteps"}>Create Card Step</NavLink>
                 <NavLink to={`/user/${user1?.username}`}>My Cards</NavLink>
                 {/* <NavLink to={"/blog"}>Blog</NavLink> */}

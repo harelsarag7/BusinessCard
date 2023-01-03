@@ -16,26 +16,28 @@ import { userModel } from "../../../../../Models/userModel";
 import { authFunctions } from "../../../../../Services/auth";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { login } from "../../../../../App/authSlice";
 
 export default function BasicModalDialog() {
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
   const { register,reset, handleSubmit } = useForm< userModel | any >();
   const [wrong, setWrong] = useState<string>("") 
+  const dispatch = useDispatch();
 
-  async function loginFunction( { username, password }: userModel){
 
-      await authFunctions.login( username, password ).then( async (res: any) => {
+   function loginFunction( { username, password }: userModel){
+
+       authFunctions.login( username, password ).then( (res: any) => {
 
         if(res === "") {
           setWrong("Wrong Username or Password")
           return 
         }
-
-        window.localStorage.setItem('userToken', JSON.stringify(res));
+        dispatch(login(res));
           navigate(`/user/`+ username);
           setOpen(false);
-          window.location.reload();
       })
   }
 
