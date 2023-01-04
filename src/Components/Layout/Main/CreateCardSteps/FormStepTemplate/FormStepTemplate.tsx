@@ -16,7 +16,10 @@ import { useForm } from "react-hook-form";
 import { cardModel } from "../../../../../Models/cardModel";
 import { useDispatch, useSelector } from "react-redux";
 import { ButtonGroup, Button } from "@mui/material";
+// import { template } from "../../../../../App/cardSlice";
+import imgTemplate2 from "../FormStepTemplate/template2Demo.png"
 import { template } from "../../../../../App/cardSlice";
+import { useEffect } from "react";
 
 interface clicksForm2Model {
     onclick: () => void;
@@ -28,11 +31,14 @@ function FormStepTemplate( { onclick, stepBackButton}: clicksForm2Model ): JSX.E
     const dispatch = useDispatch();
     const cardRedux : { card : cardModel} = useSelector((state: any) => state.card);
 
-     function selectTemplate( template: number ){
-        // let templateNum = Number (template);
-        // dispatch(template(templateNum));
+     function selectTemplate( {templateNum}: {templateNum : number }  ){
+        dispatch(template(+templateNum))
         onclick()
     }
+
+    useEffect(() => {
+        console.log(cardRedux);
+    }, [])
 
     function stepBack(){
         stepBackButton();
@@ -43,16 +49,20 @@ function FormStepTemplate( { onclick, stepBackButton}: clicksForm2Model ): JSX.E
 
 			       <form onSubmit={handleSubmit(selectTemplate)}>
                     <div className="input-container">
-                        <label htmlFor="">Template:</label>
-                        <input  defaultValue={cardRedux.card? cardRedux.card.templateNum : ""} type="number" placeholder="Template:" {...register("template")} />
-                        {/* <label htmlFor="">Business Description:</label>
-                        <input  defaultValue={cardRedux.card? cardRedux.card.businessDescription : ""} type="text" placeholder="Business Description:" {...register("businessDescription")} />
-                    </div>
-                    <div className="input-container">
-                        <label htmlFor="">Phone number:</label>
-                        <input  defaultValue={cardRedux.card? cardRedux.card.phone : ""} type="text" placeholder="Phone:" {...register("phone")} />
-                        <label htmlFor="">Email:</label>
-                        <input defaultValue={cardRedux.card? cardRedux.card.email : ""} type="email" placeholder="Email:" {...register("email")} /> */}
+                        {/* <label htmlFor="">Template:</label> */}
+                        {/* <input  defaultValue={cardRedux.card? cardRedux.card.templateNum : ""} type="number" placeholder="Template:" {...register("template")} /> */}
+
+                        <div>
+                            {/* <div>{cardRedux?.card.templateNum}</div> */}
+                        {/* <input  defaultValue={cardRedux.card? cardRedux.card.businessName : ""} type="text" placeholder="Business Name:" {...register("businessName")} /> */}
+                            <input type="radio" value={1}  id="selectTemplate1"  {...register("templateNum")} />
+                            <img src={imgTemplate2} alt="" />
+                            </div>
+
+                            <div>
+                            <input type="radio" value={2}  id="selectTemplate2"  {...register("templateNum")} />
+                            <img src={imgTemplate2} alt="" />
+                        </div>
                     </div>
         
                 <div className="next-back-form-template">
@@ -62,7 +72,7 @@ function FormStepTemplate( { onclick, stepBackButton}: clicksForm2Model ): JSX.E
                 variant="outlined"
                 aria-label="Disabled elevation buttons"
                 >
-                <Button onMouseLeave={() => stepBackButton()} >Back</Button>
+                <Button disabled onClick={() => stepBackButton()} >Back</Button>
                 <Button type="submit">Next</Button>
                 </ButtonGroup>
                     </div>

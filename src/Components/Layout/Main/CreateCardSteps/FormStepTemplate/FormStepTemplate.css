@@ -1,5 +1,6 @@
-.FormStepTemplate {
-	
+.FormStepTemplate .input-container{
+	display: flex;
+    gap: 50px;
 }
 
 .next-back-form-template {

@@ -4,18 +4,39 @@ import { cardModel } from "../Models/cardModel";
 
 let initialState = {};
 
+// const cardSlice = createSlice({
+//     name: "card",
+//     initialState,
+//     reducers: {
+//         info: (state, action: PayloadAction<cardModel>) => {
+//             const card = action.payload;
+//             state = {card};
+//             return state;
+//         },
+//         template: (state, action: PayloadAction<number>) => {
+//             const template = action.payload;
+//             console.log(template);
+            
+//             state = {...state, template};
+//             return state;
+//         },
+        
+//     }
+// })
+
 const cardSlice = createSlice({
     name: "card",
     initialState,
     reducers: {
         info: (state, action: PayloadAction<cardModel>) => {
             const card = action.payload;
-            state = {card};
+            card["templateNum"] = +state
+            state = {card}
             return state;
         },
         template: (state, action: PayloadAction<number>) => {
             const template = action.payload;
-            state = {...state, template};
+            state = template;
             return state;
         },
         

@@ -84,10 +84,11 @@ import { useEffect, useState } from "react";
 import InfoIcon from '@mui/icons-material/Info';
 import PublishIcon from '@mui/icons-material/Publish';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
-import FormStepOne from "./FormStepOne/FormStepOne";
+import FormStepOne from "./FormStepInfo/FormStepInfo";
 import { cardModel } from "../../../../Models/cardModel";
 import { useSelector } from "react-redux";
 import FormStepTemplate from "./FormStepTemplate/FormStepTemplate";
+import FormPublish from "./FormPublish/FormPublish";
 
 const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
@@ -203,9 +204,9 @@ function stepBack(){
         ))}
       </Stepper>
             <div className="form-step-container">
-                {stepNum == 0 ? <div> <FormStepOne onclick={() => stepNext()} /> </div> : <></>}
-                {stepNum == 1 ? <div> <FormStepTemplate onclick={() => stepNext()} stepBackButton={() => stepBack()}  /> </div>  : <></>}
-                {stepNum == 2 ? <div> 3 </div>  : <></>}
+                {stepNum == 1 ? <div> <FormStepOne onclick={() => stepNext()} stepBackButton={() => stepBack()} /> </div> : <></>}
+                {stepNum == 0 ? <div> <FormStepTemplate onclick={() => stepNext()} stepBackButton={() => stepBack()}  /> </div>  : <></>}
+                {stepNum == 2 ? <div> <FormPublish/> </div>  : <></>}
       </div>
         {/* <button className="stepNum-button" onClick={stepNext}>Next</button> */}
         <button className="stepNum-button" onClick={stepBack}>Back</button>
