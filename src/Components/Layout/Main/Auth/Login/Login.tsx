@@ -36,7 +36,7 @@ export default function BasicModalDialog() {
           return 
         }
         dispatch(login(res));
-          navigate(`/user/`+ username);
+          // navigate(`/user/`+ username);
           setOpen(false);
       })
   }

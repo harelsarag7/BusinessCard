@@ -39,7 +39,6 @@ const cardSlice = createSlice({
             state = template;
             return state;
         },
-        
     }
 })
 

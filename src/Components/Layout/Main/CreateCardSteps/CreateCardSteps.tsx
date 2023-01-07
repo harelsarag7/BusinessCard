@@ -1,77 +1,4 @@
 import "./CreateCardSteps.css";
-
-// // function CreateCardSteps(): JSX.Element {
-// //     return (
-// //         <div className="CreateCardSteps">
-			
-// //         </div>
-// //     );
-// // }
-
-// // export default CreateCardSteps;
-
-// // import * as React from 'react';
-// import Box from '@mui/material/Box';
-// import Stepper from '@mui/material/Stepper';
-// import Step from '@mui/material/Step';
-// import StepLabel from '@mui/material/StepLabel';
-// import { useState } from "react";
-// import { userModel } from "../../../../Models/userModel";
-// import FormStepOne from "./FormStepOne/FormStepOne";
-// // import FormStepOne from "./FormStepOne/FormStepOne";
-
-
-// const steps = [
-//     'Fill Inoformation',
-//   'Choose Template',
-//   'Publish',
-// ];
-
-// export default function CreateCardSteps() {
-//     let [stepNum, setStepNum] = useState<number>(0)
-//     const [card, setCard] = useState<userModel>()
-//     console.log(card);
-    
-
-//     let cardObj = {}
-    
-//     console.log(stepNum);
-//     function stepNext(){
-//         if(stepNum >= steps.length - 1) {
-//             return;
-//         } 
-//         setStepNum(stepNum  = stepNum + 1)
-//     }
-    
-//     function stepBack(){
-//         if(stepNum <= 0) {
-//             return;
-//         } 
-//         setStepNum(stepNum  = stepNum - 1)
-//     }
-    
-//   return (
-//       <Box sx={{ width: '100%' }}>
-//         <button className="stepNum-button" onClick={stepNext}>Next</button>
-//         <button className="stepNum-button" onClick={stepBack}>Back</button>
-//       <Stepper activeStep={stepNum} alternativeLabel>
-//         {steps.map((label) => (
-//           <Step key={label}>
-//             <StepLabel>
-//                 {label}
-//                 </StepLabel>
-//           </Step>
-//         ))}
-//       </Stepper>
-//       <div className="form-step-container">
-//                 {stepNum == 0 ? <div> <FormStepOne card={() => setCard(card)}  /> </div> : <></>}
-//                 {stepNum == 1 ? <div> 2 </div>  : <></>}
-//                 {stepNum == 2 ? <div> 3 </div>  : <></>}
-//       </div>
-//     </Box>
-//   );
-// }
-
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
@@ -158,7 +85,7 @@ function ColorlibStepIcon(props: StepIconProps) {
   );
 }
 
-const steps = ['Fill Information', 'Select a Template', 'Publish'];
+const steps = ['Select a Template', 'Fill Information', 'Publish'];
 
 export default function CustomizedSteppers( ) {
   let [stepNum, setStepNum] = useState<number>(0)
@@ -206,10 +133,10 @@ function stepBack(){
             <div className="form-step-container">
                 {stepNum == 1 ? <div> <FormStepOne onclick={() => stepNext()} stepBackButton={() => stepBack()} /> </div> : <></>}
                 {stepNum == 0 ? <div> <FormStepTemplate onclick={() => stepNext()} stepBackButton={() => stepBack()}  /> </div>  : <></>}
-                {stepNum == 2 ? <div> <FormPublish/> </div>  : <></>}
+                {stepNum == 2 ? <div> <FormPublish onclick={() => stepNext()} stepBackButton={() => stepBack()} /> </div>  : <></>}
       </div>
         {/* <button className="stepNum-button" onClick={stepNext}>Next</button> */}
-        <button className="stepNum-button" onClick={stepBack}>Back</button>
+        {/* <button className="stepNum-button" onClick={stepBack}>Back</button> */}
     </Stack>
   );
 }

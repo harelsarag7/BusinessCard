@@ -1,7 +1,12 @@
 import { cardModel } from "../../../../../../Models/cardModel";
 import "./CardTemplate2.css";
+import PhoneIcon from '@mui/icons-material/Phone';
+import LanguageIcon from '@mui/icons-material/Language';
 
 function CardTemplate2( { card }: { card : cardModel}): JSX.Element {
+    const phoneTo = "tel:" + card?.phone;
+    const emailTo = "mailto:" + card?.email;
+
     return (
         <div className="CardTemplate2">
                             <div className="wrapper">
@@ -69,18 +74,31 @@ function CardTemplate2( { card }: { card : cardModel}): JSX.Element {
                             
                             
                             {/*here will be a link to my site */ }
+                            {card.website ? 
                         <a href="" className="profile-card-social__item link" target="_blank">
                         <span className="icon-font">
-                            <svg className="icon"><use xlinkHref="#icon-link"></use></svg>
+                                <LanguageIcon/>
+                            {/* <svg className="icon"><use xlinkHref="#icon-link"></use></svg> */}
                         </span>
                         </a>
+                        : <></>}
 
-                                
-                        <a href="" className="profile-card-social__item email" target="_blank">
+                         {card.email? 
+                        <a href={emailTo} className="profile-card-social__item email" target="_blank">
                         <span className="icon-font">
                             <svg className="icon"><use xlinkHref="#icon-email"></use></svg>
                         </span>
                         </a>
+                            : <></>}       
+
+
+                        {card.phone? 
+                        <a href={phoneTo} className="profile-card-social__item email" target="_blank">
+                        <span className="phone-font">
+                        <PhoneIcon className="phone-icon" />
+                        </span>
+                        </a>
+                            : <></>}
 
                     </div>
 

@@ -19,9 +19,10 @@ export default function BasicModalDialog() {
   const [wrong, setWrong] = useState<string>("") 
   const dispatch = useDispatch();
 
-  async function RegisterFunction( { firstName, lastName, email, phone, username, password} : userModel){
+  async function RegisterFunction( user : userModel){
+    console.log(user)
 
-      await authFunctions.register({firstName, lastName, email, phone, username, password}).then( async (res: any) => {
+      await authFunctions.register(user).then( async (res: any) => {
 
         if(res === "") {
           setWrong("Wrong Username or Password")
@@ -29,7 +30,7 @@ export default function BasicModalDialog() {
         }
 
         // window.localStorage.setItem('userToken', JSON.stringify(res));
-          navigate(`/user/`+ username);
+          navigate(`/user/`+ user.username);
           setOpen(false);
           dispatch(login(res));
 

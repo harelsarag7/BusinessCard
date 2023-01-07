@@ -1,5 +1,7 @@
 .FormStepInfo {
-	
+    display: flex;
+/* margin: 0 auto;	 */
+align-items: center;
 }
 .FormStepInfo form{
 	display: flex;
@@ -8,7 +10,6 @@
     padding: 10px;
     flex-wrap: wrap;
     justify-content: center;
-    margin:  auto auto;
 }
 
 .FormStepInfo form input {
@@ -57,4 +58,8 @@ input:focus {
 .FormStepInfo form button span {
     position: relative; 
     bottom:  0;
+}
+
+.FormStepInfo .online-template .wrapper {
+    min-height: 200px !important; 
 }

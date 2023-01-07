@@ -1,3 +1,4 @@
+import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { cardModel } from "../Models/cardModel";
 import { userModel } from "../Models/userModel";
@@ -35,17 +36,20 @@ class CardFunctions {
        }
    }
 
-   async createCard( {userid, businessName, businessDescription, image, phone, email, templateNum} : cardModel ): Promise<cardModel> {
+   async createCard( {userid, businessName, businessDescription, location,image, phone, email, templateNum, website, facebook} : cardModel ): Promise<cardModel> {
          // let id = 4;
       let card: cardModel = {
          // id,
          userid,
          businessName,
          businessDescription,
+         location,
          image,
          phone,
          email,
-         templateNum
+         templateNum,
+         website,
+         facebook
       }
       try {
          const details: cardModel = await fetch(`http://localhost:3040/api/cards`, {
@@ -53,11 +57,13 @@ class CardFunctions {
             method: "POST",
             headers : {
                "Content-Type": "application/json",                                                                                                
-               "Access-Control-Origin": "*"
+               "Access-Control-Origin": "*",
+               "authentication": "Bearer " + window.localStorage.getItem("userToken")
             },
             body:  JSON.stringify(card)
          }).then(res => res.json());
 
+            console.log(details);
             
          return details;
       } catch (e) {
@@ -81,5 +87,22 @@ class CardFunctions {
            return undefined
        }
    }
+
+
+   async deleteCard(id : number | undefined): Promise<string>{
+      console.log("delete service: " + id);
+      if(!id){
+         console.log("no card");
+         return "";
+      }
+      try{ 
+          const { data } = await axios.delete(`http://localhost:3040/api/cards/${id}`);
+              
+          return data;
+      } catch(e) {
+          return ``;
+      } 
+  }
+
 }
 export const cardFunctions = new CardFunctions();

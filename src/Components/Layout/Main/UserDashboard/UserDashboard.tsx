@@ -16,25 +16,19 @@ function UserDashboard(  ): JSX.Element {
     const [cards, setCards] = useState<cardModel[] | undefined>(undefined)
     const userRedux = useSelector((state: any) => state.auth)
 
+
+
+    const [deleteBtn, setDeleteBtn] = useState<boolean>(false)
     
+
+    // function logDeleteBtn(){
+    //     console.log(deleteBtn);
+    //     setDeleteBtn(!deleteBtn)
+    // }
     useEffect(() => {
-        // let token1: any = window.localStorage.getItem(`userToken`);
-        // if(!token1){
-        //     setUser(undefined)
-        // }else {
-
-        //     setToken(token1?.toString())
-        //     const user = jwtDecode<{ user: userModel}>(token1);
-        //     // let id = user.id;
-        //     if(user){
-        //         // userFunctions.getUserById(Number(id))
-        //         console.log(user);
-                
-        //         setUser(user)
-        //     }
-        // }
+        console.log("1");
+        
         if(userRedux){
-
             userFunctions.getUserById(userRedux.sub).then((res) => {
                 setUser(res)
             });
@@ -49,10 +43,9 @@ function UserDashboard(  ): JSX.Element {
 
                 setCards(cards)
             }
-            
         })
     
-    }, [])
+    }, [deleteBtn])
 
 
     return (
@@ -61,7 +54,7 @@ function UserDashboard(  ): JSX.Element {
 
                 <div className="welcome-dashboard">{fullUser? <h1> Welcome {fullUser.firstName}</h1> : `Please Login`}</div>
             <div className="dashboard-all-cards">
-                {cards? cards.map(card => ( <UserCard key={card.id} cardId={card.id}/>))
+                {cards? cards.map(card => ( <UserCard key={card.id} cardId={card.id} setDeleteBtn={(btn: boolean) => setDeleteBtn(btn)} deleteBtn={deleteBtn} />))
                  : 
                 <div>
                     <p> No cards yet </p>
