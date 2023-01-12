@@ -1,3 +1,6 @@
+.FormStepTemplate {
+    margin-bottom: 200px;
+}
 .FormStepTemplate .input-container{
 	display: flex;
     gap: 50px;

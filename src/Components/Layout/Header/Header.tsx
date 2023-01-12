@@ -20,23 +20,7 @@ function Header(): JSX.Element {
     const userRedux = useSelector((state: any) => state.auth)
 
     useEffect(() => {
-
         console.log(userRedux);
-        
-        
-        // let token1: any = window.localStorage.getItem(`userToken`);
-        
-        // if(!token1){
-        //     setUser(undefined)
-        // } else {
-        //         const user: any = jwtDecode<{ user: userModel}>(token1);
-                
-        //            const userDetails = userFunctions.getUserById(user.sub).then(res => {
-                    
-        //             setUser(res)
-        //            });
-        //         }
-                
     }, [userRedux])
 
 
@@ -70,20 +54,19 @@ function Header(): JSX.Element {
 
                  <div>
                  <div>{userRedux? 
-                 <div className="avatar-header">
-                 {/* <p>Welcome {user1.firstName}</p> */}
-                {/* <Tooltip  onClick={logout} title="Logout" color="danger" size="lg" variant="outlined" id="logout-header"> */}
+                 <div className="avatar-header" >
                          <Avatar 
                          aria-owns={anchorEl ? "simple-menu" : undefined}
                         aria-haspopup="true"
                         onClick={handleClick}
-                        onMouseOver={handleClick} sx={{ bgcolor: deepOrange[500] }}>{userRedux.username?.charAt(0).toLocaleUpperCase()}
+                        onMouseOver={handleClick}   sx={{ bgcolor: deepOrange[500] }}>{userRedux.username?.charAt(0).toLocaleUpperCase()}
 
-                         <Menu
+                         <Menu 
                             id="simple-menu"
                             anchorEl={anchorEl}
                             open={Boolean(anchorEl)}
                             onClose={handleClose}
+                            
                             MenuListProps={{ onMouseLeave: handleClose }}
                         >
                             <MenuItem onClick={handleClose}>Profile</MenuItem>
@@ -91,8 +74,6 @@ function Header(): JSX.Element {
                             <MenuItem onClick={logoutButton}>Logout</MenuItem>
                         </Menu>
                             </Avatar>
-                {/* </Tooltip> */}
-                 {/* <button onClick={logout}>Logout</button> */}
                  </div>
                  : <Login/>
                         }</div>

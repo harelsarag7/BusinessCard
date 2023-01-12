@@ -28,12 +28,22 @@ const cardSlice = createSlice({
     name: "card",
     initialState,
     reducers: {
+            // info: (state, action: PayloadAction<cardModel>) => {
+            //     const card = action.payload;
+            //     return {...state, card};
+            //   },
         info: (state, action: PayloadAction<cardModel>) => {
             const card = action.payload;
-            card["templateNum"] = +state
-            state = {card}
+                card["templateNum"] = +state
+            state = card
             return state;
         },
+            // template: (state, action: PayloadAction<number>) => {
+            //     const template = action.payload;
+            //     console.log({...state,template});
+                
+            //     return {...state, template}
+            //   },
         template: (state, action: PayloadAction<number>) => {
             const template = action.payload;
             state = template;

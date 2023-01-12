@@ -1,5 +1,4 @@
 import axios from "axios";
-import { cardModel } from "../Models/cardModel";
 import { userModel } from "../Models/userModel";
 
 class AuthFunctions {
@@ -13,7 +12,6 @@ class AuthFunctions {
                 
             return data;
         } catch(e) {
-            // console.error(e);
             return ``;
         } 
     }
@@ -27,7 +25,6 @@ class AuthFunctions {
                 
             return data;
         } catch(e) {
-            // console.error(e);
             return ``;
         } 
     }

@@ -1,22 +1,28 @@
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import Login from "../Main/Auth/Login/Login";
+import Register from "../Main/Auth/Register/Register";
 import "./Footer.css";
 
 function Footer(): JSX.Element {
-    return (
         
+    const userRedux = useSelector((state: any) => state.auth)
 
-
-
-        // <div className="Footer">
+    useEffect(() => {
+        console.log(userRedux);
+    }, [userRedux])
+    return (
             
  <footer className="footer">
         <div className="start-learning">
             <div className="footer-start">
                 <div className="texts">
-                    <h2 className="section-title">Start Shoping now</h2>
+                    <h2 className="section-title">Start introducing yourself</h2>
                     <h3 className="section-sub-heading">
-                        <span>Only</span><strong> $15 </strong>
+                        <span> PREMIUM Cards - Only</span><strong> $5 </strong>
                         <span>for a</span> <strong>One year</strong>
-                        <span> memberships</span>
+                        {/* <span> PREMIUM Cards</span> */}
                     </h3>
                 </div>
                 <a href="#" className="button">
@@ -40,21 +46,17 @@ function Footer(): JSX.Element {
             <div className="column is-nav">
                 <div className="column-title">Navigation</div>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Login</a></li>
-                    <li><a href="#">Join</a></li>
+                    <li><Link to="/Home">Home</Link></li>
+                    <li><Link to="/createcardsteps">Create new Card</Link></li>
+                    <li><Link to={`/user/${userRedux?.username}`}>My Cards</Link></li>
+                    <li><Login/><Register/></li>
                 </ul>
             </div>
             <div className="column is-nav">
                 <div className="column-title">Contact</div>
                 <ul>
-                    <li><a href="#"><i className="fa fa-envelope-open"></i> Harel@fullstack.com</a></li>
+                    <li><a href="#"><i className="fa fa-envelope-open"></i> HarelSarag7@gmail.com</a></li>
                     <li><a href="#"><i className="fa fa-twitter"></i>@Harel_Fullstack_Developer</a></li>
-                    {/* <li><a href="#"><i className="fa fa-linkedin"></i>Linkedin</a></li> */}
-                </ul>
-                <div className="column-title">Other</div>
-                <ul>
-                    <li><a href="#">Quiz</a></li>
                 </ul>
             </div>
             <div className="column is-nav">

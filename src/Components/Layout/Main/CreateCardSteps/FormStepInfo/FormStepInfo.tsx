@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import CardTemplate2 from "../../CreateCard/CardTemplate/CardTemplate2/CardTemplate2";
 import CardTemplate1 from "../../CreateCard/CardTemplate/CardTemplate1/CardTemplate1";
 
-
 type CardComponentType = ({ card }: { card: cardModel}) => JSX.Element;
 
 const Components: Record<number, CardComponentType> = {
@@ -26,19 +25,21 @@ function FormStepInfo( { onclick, stepBackButton}: clicksForm2Model ): JSX.Eleme
     const { register, handleSubmit } = useForm<cardModel | any>();
     const dispatch = useDispatch();
     const cardRedux : any = useSelector((state: any) => state.card);
+    // const formdata = new FormData();
 
      function createCardFunction(  card: cardModel){
         dispatch(info( card))
         onclick();
     }
     const [card, setCard] = useState<cardModel>()
-    const Component = Components[cardRedux.card?.templateNum ?? cardRedux ?? 2 ];
+    const Component = Components[cardRedux?.templateNum ?? cardRedux ?? 2 ];
     
     
     useEffect(() => {
-        console.log(cardRedux.card);
+        // console.log(cardRedux.card);
+        console.log(cardRedux);
 
-        setCard(cardRedux.card)
+        setCard(cardRedux)
         
     }, [cardRedux])
 
@@ -169,12 +170,15 @@ function FormStepInfo( { onclick, stepBackButton}: clicksForm2Model ): JSX.Eleme
                         <input onInput={(location) => onBusiLocation(location)}  defaultValue={cardRedux.card? cardRedux.card.location : ""} type="text" placeholder="Adress:" {...register("location")} />
                       
                         <label htmlFor="website">Website:</label>
-                        <input id="website" onInput={(website) => onBusiWebsite(website)}  defaultValue={cardRedux.card? cardRedux.card.website : ""} type="str=ring" placeholder="Web site link:" {...register("website")} />
+                        <input id="website" onInput={(website) => onBusiWebsite(website)}  defaultValue={cardRedux.card? cardRedux.card.website : ""} type="string" placeholder="Web site link:" {...register("website")} />
                       
                         <label htmlFor="facebook">Facebook:</label>
-                        <input id="facebook" onInput={(facebook) => onBusiFacbook(facebook)}  defaultValue={cardRedux.card? cardRedux.card.facebook : ""} type="str=ring" placeholder="Facebook link:" {...register("facebook")} />
+                        <input id="facebook" onInput={(facebook) => onBusiFacbook(facebook)}  defaultValue={cardRedux.card? cardRedux.card.facebook : ""} type="string" placeholder="Facebook link:" {...register("facebook")} />
                     </div>
-        
+
+                        {/* <label htmlFor="Image">Your photo or logo:</label> */}
+                        {/* <input id="Image" onInput={(image) => onBusiFacbook(image)}  defaultValue={cardRedux.card? cardRedux.card.facebook : ""} type="string" placeholder="Facebook link:" {...register("facebook")} /> */}
+                        {/* <input id="Image" type="file" {...register("image")} /> */}
                 <div className="next-back-form1">
 
                 <ButtonGroup

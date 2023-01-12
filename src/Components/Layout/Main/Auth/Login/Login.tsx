@@ -77,17 +77,10 @@ export default function BasicModalDialog() {
             Fill your details to connect.
           </Typography>
 
-          <form 
-            // onSubmit={(event) => {
-              onSubmit={ handleSubmit(loginFunction)}
-             
-              // event.preventDefault();
-              // setOpen(false);
-            // }}
-          >
+          <form onSubmit={ handleSubmit(loginFunction)}>
             <Stack spacing={2}>
               <TextField label="Username" autoFocus required {...register("username")}/>
-              <TextField label="Password" required {...register("password")} />
+              <TextField label="Password" type="password" required {...register("password")} />
               <Button type="submit" variant="contained">Submit</Button>
             </Stack>
             <Typography

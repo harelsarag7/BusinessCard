@@ -21,7 +21,7 @@ function FormPublish(  { onclick, stepBackButton}: clicksForm2Model): JSX.Elemen
     const notlogged = () => toast.error("Must be logged in!", {
         position: toast.POSITION.TOP_CENTER
     });
-    const cardRedux : { card : cardModel} = useSelector((state: any) => state.card);
+    const cardRedux : cardModel = useSelector((state: any) => state.card);
     const userRedux = useSelector((state: any) => state.auth)
 
     async function createCardFunction(){
@@ -31,16 +31,22 @@ function FormPublish(  { onclick, stepBackButton}: clicksForm2Model): JSX.Elemen
                 return
              }
 
-             cardRedux.card.userid = userRedux.sub.toString()
-             console.log(cardRedux.card);
+             let CardReduxToSend = {...cardRedux};
+            CardReduxToSend.userid = userRedux.sub.toString()
+
              
-           await cardFunctions.createCard( cardRedux.card ).then((res) => {
+           await cardFunctions.createCard( CardReduxToSend ).then((res) => {
             console.log(res);
             
             navigate("/card/"+ res.id);
+            
            })
         }
 
+        useEffect(() => {
+            // console.log(cardRedux);
+
+        }, [])
 
     return (
         <div className="FormPublish">

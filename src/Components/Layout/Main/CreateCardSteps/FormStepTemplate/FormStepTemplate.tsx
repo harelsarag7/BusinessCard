@@ -4,7 +4,7 @@ import { cardModel } from "../../../../../Models/cardModel";
 import { useDispatch, useSelector } from "react-redux";
 import { ButtonGroup, Button } from "@mui/material";
 import imgTemplate2 from "../FormStepTemplate/template2Demo.png"
-import { template } from "../../../../../App/cardSlice";
+import { info, template } from "../../../../../App/cardSlice";
 import { useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 
@@ -25,18 +25,23 @@ function FormStepTemplate( { onclick, stepBackButton}: clicksForm2Model ): JSX.E
     });
 
 
-     function selectTemplate( {templateNum}: {templateNum : number }  ){
-        dispatch(template(+templateNum))
+     function selectTemplate( {templateNum}: {templateNum : number}  ){
+        console.log(templateNum);
+        
         if(!templateNum){   
             noTemplate();
             return;
         }
+        dispatch(template(templateNum))
         nextChoseTemplate();
         onclick()
     }
 
     useEffect(() => {
+        // let {templateNum} = cardRedux
+        // dispatch(template(null))
         console.log(cardRedux);
+        // dispatch(template())
     }, [])
 
     return (

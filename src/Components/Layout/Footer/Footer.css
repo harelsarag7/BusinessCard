@@ -28,10 +28,11 @@ ul > li { line-height: 1.5em; }
     max-width: 1280px;
     width: 90%;
     margin: auto;
-    padding: 80px 100px;
-    /* background: #705df2; */
-    /* background: rgb(131,58,180); */
-    background: linear-gradient(to right top, #705df2, #c0a8f9);
+    padding: 60px 100px;
+    /* background-color: rgba(0, 9, 13, 0.907); */
+    background-color: rgba(139, 125, 209, 0.907);
+    box-shadow: 7px 10px 0px -2px rgba(255, 255, 255, 0.750);
+        /* background: linear-gradient(to right top, #705df2, #c0a8f9); */
 /* background: linear-gradient(
     50deg,
     hsl(0deg 0% 100%) 0%,
@@ -48,7 +49,7 @@ ul > li { line-height: 1.5em; }
     position: absolute;
     left: 0;
     right: 0;
-    top: -150px;
+    top: -90px;
 }
 .footer .inner {
     display: flex;
@@ -60,7 +61,7 @@ ul > li { line-height: 1.5em; }
     margin: auto;
     text-align: left;
 }
-.main-logo {
+/* .main-logo {
     position: relative;
     display: flex;
     align-items: center;
@@ -79,7 +80,7 @@ ul > li { line-height: 1.5em; }
 .logo-info {
     text-align: left;
     line-height: 20px;
-}
+} */
 .text {
     font-size: 17px;
     line-height: 17px;
@@ -96,6 +97,7 @@ ul > li { line-height: 1.5em; }
     width: 100%;
     font-size: 14px;
     text-align: left;
+    padding-left: 100px;
 }
 .footer .column .column-title {
     font-weight: 700;
@@ -178,5 +180,8 @@ a.button {
     }
     .column.is-logo {
         order: 4;
+    }
+    .footer .column {
+        padding-left: 20px;
     }
 }

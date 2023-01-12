@@ -59,8 +59,11 @@ class CardFunctions {
                "Content-Type": "application/json",                                                                                                
                "Access-Control-Origin": "*",
                "authentication": "Bearer " + window.localStorage.getItem("userToken")
+               
             },
-            body:  JSON.stringify(card)
+            
+            body:  JSON.stringify(card),
+            
          }).then(res => res.json());
 
             console.log(details);

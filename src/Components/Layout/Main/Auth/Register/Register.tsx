@@ -25,16 +25,13 @@ export default function BasicModalDialog() {
       await authFunctions.register(user).then( async (res: any) => {
 
         if(res === "") {
-          setWrong("Wrong Username or Password")
+          setWrong("This Username is already taken ")
           return 
         }
 
-        // window.localStorage.setItem('userToken', JSON.stringify(res));
           navigate(`/user/`+ user.username);
           setOpen(false);
           dispatch(login(res));
-
-          // window.location.reload();
       })
   }
 
@@ -84,11 +81,11 @@ export default function BasicModalDialog() {
           >
             <Stack spacing={2}>
               <TextField label="Username" autoFocus required {...register("username")}/>
-              <TextField label="Password" required {...register("password")} />
+              <TextField label="Password" type="password"  required {...register("password")} />
               <TextField label="firstName" required {...register("firstName")} />
               <TextField label="lastName" required {...register("lastName")} />
-              <TextField label="email" required {...register("email")} />
-              <TextField label="phone" required {...register("phone")} />
+              <TextField label="email" type="email" required {...register("email")} />
+              <TextField label="phone" type="tel" required {...register("phone")} />
               <Button type="submit" variant="contained">Submit</Button>
             </Stack>
             <Typography

@@ -15,7 +15,7 @@ function Main(): JSX.Element {
         <div className="Main">  
 			<Routes>
                 <Route path="/" element={<Home/>}></Route>
-                <Route path="/home" element="Home"></Route>
+                <Route path="/home" element={<Home/>}></Route>
                 {/* <Route path="/aboutus" element="About Us"></Route> */}
                 {/* <Route path="/contact" element="Contact"></Route> */}
                 {/* <Route path="/blog" element="Blog"></Route> */}

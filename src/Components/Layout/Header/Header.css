@@ -7,9 +7,10 @@
     /* border-bottom: 1px solid black; */
 }
 
-.active {
+/* .active {
     font-weight:  bold;
-}
+    background-color: red !important;
+} */
 
 #logout-header {
     color: white;
@@ -75,6 +76,11 @@
 @media only screen and (max-width: 1400px) {
     .container {
         width: 80%;
+    }
+  }
+@media only screen and (max-width: 902px) {
+    .container {
+        width: 100%;
     }
   }
 
