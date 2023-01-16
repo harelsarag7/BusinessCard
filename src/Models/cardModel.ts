@@ -3,7 +3,7 @@ export interface cardModel {
     userid?: string;
     businessName?: string;
     businessDescription?: string;
-    image?: File;
+    image?: any;
     phone?: string
     email?: string;
     instagram?: string;
@@ -13,4 +13,5 @@ export interface cardModel {
     location?: string;
     website?: string;
     templateNum?: number;
+    upload? : any;
 }

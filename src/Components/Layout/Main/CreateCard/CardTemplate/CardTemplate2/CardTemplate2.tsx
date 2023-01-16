@@ -3,7 +3,7 @@ import "./CardTemplate2.css";
 import PhoneIcon from '@mui/icons-material/Phone';
 import LanguageIcon from '@mui/icons-material/Language';
 
-function CardTemplate2( { card }: { card : cardModel}): JSX.Element {
+function CardTemplate2( { card }: { card : cardModel }): JSX.Element {
     const phoneTo = "tel:" + card?.phone;
     const emailTo = "mailto:" + card?.email;
 
@@ -12,7 +12,7 @@ function CardTemplate2( { card }: { card : cardModel}): JSX.Element {
                             <div className="wrapper">
                 <div className="profile-card js-profile-card">
                     <div className="profile-card__img">
-                    <img src="https://res.cloudinary.com/muhammederdem/image/upload/v1537638518/Ba%C5%9Fl%C4%B1ks%C4%B1z-1.jpg" alt="profile card"/>
+                    <img src={card.upload?? "https://www.brooklinspringfair.com/wp-content/uploads/2017/03/your-logo-here-318x300.png" } />
                     </div>
 
                     <div className="profile-card__cnt js-profile-cnt">

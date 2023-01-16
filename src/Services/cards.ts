@@ -36,9 +36,47 @@ class CardFunctions {
        }
    }
 
+
+
+
+
+
+
+
+
+
+
+
+//       async createFullCard(card : cardModel | any) {
+//       let file = card.target.files[0];
+//       const url = 'http://localhost:3040/api/cards';
+//       const formData = new FormData();
+//       formData.append('file', file);
+//       formData.append('userid', card.userid);
+//       formData.append('businessName', card.businessName);
+//       formData.append('businessDescription', card.businessDescription);
+//       formData.append('location', card.location);
+//       formData.append('phone', card.phone);
+//       formData.append('email', card.email);
+//       formData.append('templateNum', card.templateNum);
+//       formData.append('website', card.website);
+//       formData.append('facebook', card.facebook);
+//       formData.append('fileName', file.name);
+//       const config = {
+//         headers: {
+//           'content-type': 'multipart/form-data',
+//         },
+//       };
+//       await axios.post(url, formData, config).then((response) => {
+//         console.log(response.data);
+//         return response.data
+//       });
+//   }
+
+
    async createCard( {userid, businessName, businessDescription, location,image, phone, email, templateNum, website, facebook} : cardModel ): Promise<cardModel> {
          // let id = 4;
-      let card: cardModel = {
+      let card: any = {
          // id,
          userid,
          businessName,
@@ -62,6 +100,7 @@ class CardFunctions {
                
             },
             
+            // body:  new FormData(card),
             body:  JSON.stringify(card),
             
          }).then(res => res.json());
@@ -78,12 +117,18 @@ class CardFunctions {
    }
 
 
-   async getCard(userid: number | undefined) {
+   async getCard(id: number | undefined) {
       try {
-         const response =  await fetch(`http://localhost:3040/api/card/${userid}`, {
+         const response =  await fetch(`http://localhost:3040/api/card/${id}`, {
             mode: "cors",
          }).then(res => res.json());
-         // console.log("harel:  " + response);
+         
+         const image = await fetch(`http://localhost:3040/api/card/image/${id}`, {
+            mode: "cors",
+         })
+         console.log(image.url);
+         response.upload = image.url
+
           return response;
           
        } catch (e){

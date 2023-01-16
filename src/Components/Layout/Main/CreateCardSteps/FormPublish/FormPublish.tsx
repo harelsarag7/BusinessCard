@@ -44,7 +44,7 @@ function FormPublish(  { onclick, stepBackButton}: clicksForm2Model): JSX.Elemen
         }
 
         useEffect(() => {
-            // console.log(cardRedux);
+            console.log(cardRedux);
 
         }, [])
 

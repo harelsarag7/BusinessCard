@@ -30,7 +30,7 @@ function UserDashboard(  ): JSX.Element {
             }
         })
     
-    }, [deleteBtn])
+    }, [deleteBtn,userRedux ])
 
 
     return (

@@ -25,6 +25,8 @@ function CardTemplate(): JSX.Element {
     useEffect(() => {
        const idNum: any= id.id
         cardFunctions.getCard(idNum).then(res => {
+            console.log(res);
+            
             setCard(res);
             
         });

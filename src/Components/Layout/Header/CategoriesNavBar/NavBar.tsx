@@ -25,7 +25,8 @@ function NavBar(): JSX.Element {
                 <NavLink to={"/"}>Home</NavLink>
                 {/* <NavLink to={"/createcard"}>Create Card</NavLink> */}
                 <NavLink to={"/createcardsteps"}>Create Card</NavLink>
-                <NavLink to={`/user/${userRedux?.username}`}>My Cards</NavLink>
+                {/* <NavLink to={`/user/${userRedux?.username}`}>My Cards</NavLink> */}
+                <NavLink to={`/user`}>My Cards</NavLink>
                 {/* <NavLink to={"/blog"}>Blog</NavLink> */}
         </div>
     );

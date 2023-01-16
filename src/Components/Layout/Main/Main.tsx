@@ -22,7 +22,7 @@ function Main(): JSX.Element {
                 <Route path="/createcard" element={<CreateCard/>}></Route>
                 <Route path="/createcardsteps" element={<CreateCardSteps/>}></Route>
                 <Route path="/card/:id" element={<CardTemplate/>}></Route>
-                <Route path="/user/:username" element={<UserDashboard/>}></Route>
+                <Route path="/user" element={<UserDashboard/>}></Route>
                 <Route path="/*" element={<PageNotFound/>}></Route>
 
                 {/* <Route path="/allproducts" element={<AllProducts/>}></Route> */}
